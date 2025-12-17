@@ -6,6 +6,8 @@
   const modalTitle = document.getElementById("modal-title");
   const modalContent = document.getElementById("modal-content");
   const modalClose = document.getElementById("modal-close");
+  const API_BASE = ""; // 同源：Render 上就是 https://你的站
+
 
   // 簡單模擬 Share UI: Card 元件
   function createCard({ title, subtitle, emoji, accent, onClick }) {
@@ -255,7 +257,7 @@
     });
 
     // ✅ 從後端抓餐廳資料（你等等會做 /api/restaurants）
-    fetch("http://localhost:3000/api/restaurants")
+    fetch("/api/restaurants")
       .then((r) => r.json())
       .then((json) => {
         const restaurants = json.restaurants || [];
@@ -279,7 +281,7 @@
             info.open({ map, anchor: marker });
 
             try {
-              const url = `http://localhost:3000/api/restaurant-meals?lat=${encodeURIComponent(x.lat)}&lng=${encodeURIComponent(x.lng)}`;
+              const url = `${API_BASE}/api/restaurant-meals?lat=${encodeURIComponent(x.lat)}&lng=${encodeURIComponent(x.lng)}`;
               const res = await fetch(url);
               const json = await res.json();
               const meals = json.meals || [];
@@ -592,7 +594,7 @@
       }
 
       try {
-        const res = await fetch("http://localhost:3000/api/generate-plan", {
+        const res = await fetch("/api/generate-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -752,7 +754,7 @@
           ...(currentId ? [currentId] : [])
         ]));
 
-        const res = await fetch("http://localhost:3000/api/swap-meal", {
+        const res = await fetch("/api/swap-meal", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
