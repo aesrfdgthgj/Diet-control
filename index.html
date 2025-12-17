@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>🍎 飲食規劃網站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* 這裡放必要 CSS，簡單復刻一些 react-tailwind 樣式 */
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background-color: #fff7fb;
+      color: #334155; /* slate-900 */
+    }
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.7);
+      border-bottom: 1px solid #cbd5e1; /* slate-200 */
+      z-index: 10;
+    }
+    .container {
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      margin-left: 1rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      color: #334155;
+      font-size: 0.875rem;
+    }
+    nav a:hover {
+      background-color: #f1f5f9; /* slate-100 */
+    }
+    main {
+      max-width: 64rem;
+      margin: 1.5rem auto;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0f172a; /* slate-900 */
+    }
+    .card {
+      background: #dcfce7; /* green-50 */
+      border: 2px solid #bbf7d0; /* green-200 */
+      border-radius: 1rem;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+      margin-bottom: 1rem;
+    }
+    .card.orange {
+      background: #fff7ed; /* orange-50 */
+      border-color: #fed7aa; /* orange-200 */
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      background-color: #e6fffa;
+    }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .modal-backdrop.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal {
+      background: white;
+      padding: 1.5rem;
+      max-width: 400px;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px rgb(0 0 0 / 0.1);
+    }
+    .modal h2 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .modal p {
+      line-height: 1.6; /* 讓行距舒服一點 */
+      font-size: 1rem;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      background-color: #16a34a; /* green-600 */
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #15803d;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1rem;
+    }
+    .modal ul {
+      margin-bottom: 1rem;
+    }
+    .modal b {
+      color: #0f172a; /* 讓重點字深一點 */
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <a href="#/" style="font-weight:bold; font-size: 1.2rem;">🍎 飲食規劃網站</a>
+      <nav>
+        <a href="#/">主頁</a>
+        <a href="#/records">我的紀錄</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1 id="page-title">主頁</h1>
+    <div id="page-content"></div>
+  </main>
+
+  <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal">
+      <h2 id="modal-title"></h2>
+      <p id="modal-content"></p>
+      <button id="modal-close" class="btn">關閉</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi6xCNa9R419Jrx5P_VuJpv4uN-Ry-nUw&callback=initMap"
+    async
+    defer
+  ></script>
+</body>
+</html>
