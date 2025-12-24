@@ -417,10 +417,12 @@
 
     // 第一橫排：三個預算
     const row1 = document.createElement("div");
+    row1.className = "plan-row plan-row-1";
     row1.style.display = "flex";
     row1.style.gap = "2rem";
     ["早餐", "午餐", "晚餐"].forEach(meal => {
       const block = document.createElement("div");
+      block.className = "plan-block plan-budget";
       block.style.flex = "1";
       block.style.display = "flex";
       block.style.flexDirection = "column";
@@ -447,10 +449,12 @@
 
     // 第二橫排：三個餐型（外食 / 自煮）
     const row2 = document.createElement("div");
+    row1.className = "plan-row plan-row-2";
     row2.style.display = "flex";
     row2.style.gap = "2rem";
     ["早餐", "午餐", "晚餐"].forEach(meal => {
       const block = document.createElement("div");
+      block.className = "plan-block plan-type";
       block.style.flex = "1";
       block.style.display = "flex";
       block.style.flexDirection = "column";
@@ -504,11 +508,13 @@
 
     // 第三橫排：卡路里 + 儲存鍵
     const row3 = document.createElement("div");
+    row1.className = "plan-row plan-row-3";
     row3.style.display = "flex";
     row3.style.gap = "2rem";
     row3.style.alignItems = "center";
 
     const calBlock = document.createElement("div");
+    calBlock.className = "plan-block plan-calorie";
     calBlock.style.flex = "2";
     calBlock.style.display = "flex";
     calBlock.style.flexDirection = "column";
@@ -532,6 +538,7 @@
     calBlock.appendChild(calorieInput);
 
     const saveBlock = document.createElement("div");
+    saveBlock.className = "plan-block plan-save";
     saveBlock.style.flex = "1";
     saveBlock.style.display = "flex";
     saveBlock.style.alignItems = "center";

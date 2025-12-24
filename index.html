@@ -123,6 +123,56 @@
     .modal b {
       color: #0f172a; /* 讓重點字深一點 */
     }
+    /* ===== RWD: 手機版（<= 640px） ===== */
+    @media (max-width: 640px) {
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 0.5rem;
+      }
+
+      main {
+        margin: 0.75rem auto;
+        padding: 1rem;
+        border-radius: 0.75rem;
+      }
+
+      h1 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+      }
+
+      /* 設定頁：三排全部改成直向堆疊 */
+      .plan-row {
+        flex-direction: column !important;
+        display: flex !important;
+        gap: 0.75rem !important;
+        align-items: stretch !important;
+      }
+
+      /* 每張卡片在手機都吃滿寬 */
+      .plan-block {
+        width: 100% !important;
+        flex: 1 1 auto !important;
+      }
+
+      /* row3: 儲存按鈕不要被擠爆 */
+      .plan-save .btn {
+        width: 100% !important;
+        height: 3rem !important;
+        font-size: 1.05rem !important;
+      }
+
+      /* 輸入框更好按 */
+      input, button {
+        font-size: 16px; /* 防 iOS 自動放大 */
+      }
+    }
+
   </style>
 </head>
 
